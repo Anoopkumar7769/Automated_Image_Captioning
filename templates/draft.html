@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Image Captioning</title>
+	<!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	
+<style>
+	
+.heading{
+	font-weight: 100;
+	font-size: 4em;
+	text-shadow: 1px 1px 5px black;
+}
+
+img{
+	height: 90%;
+	width: 100%;
+}
+
+.text{
+	font-size: 25px;
+	font-style: italic;
+}
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  min-height: 100%;
+  
+}
+.content {
+  position: fixed;
+  bottom: 0;
+  background: rgba(17, 144, 182, 0.185);
+  color: #f1f1f1;
+  width: 100%;
+  height: 100%;
+}
+
+</style>
+
+
+</head>
+<body>
+	<video autoplay muted loop id="myVideo">
+        <source src="../static/production ID_5075206.mp4" type="video/mp4">
+    </video>
+	<div class="content">
+		<div class="container">
+		
+			<nav class="navbar navbar-dark bg-dark">
+				<div class="container">
+					<a class="navbar-brand" href="#"> <h3 style="padding-left:250px ; font-family: 'Times New Roman', Times, serif; font-size: xxx-large; padding-left: 320px; color: orange;">Image Captioning</h3></a>
+				</div>
+			</nav>
+			<h1 style="padding-left: 170px; padding-top: 80px; color: whitesmoke; font-family: Georgia, 'Times New Roman', Times, serif; font-style: italic;">Upload your image below for caption 🙂</h1>
+			<form class="form-inline" method="POST" action="/" enctype="multipart/form-data" style="padding-left: 250px; padding-top: 110px;">
+				<label style="font-size: x-large; color: rgb(235, 177, 20);"><b> Image : &nbsp;&nbsp; </b></label>
+				<input class="form-control" type="file" name="userfile" placeholder="Your Image" >&nbsp;&nbsp;
+				<button type="submit" class="btn btn-primary" style="border-radius: 10px; height: 40px;"> Upload👇 </button>
+			</form>
+	
+			<br>
+			<br>
+	
+			{% if your_result %}
+	
+				<div class="row" style="padding-left: 420px; height: 200px;">
+					<div class="col-sm-4">
+						<img src="{{your_result['image']}}">
+					</div>
+				</div>
+				<div>
+					<div style="padding-top: 01px; padding-left: 120px;">	
+						<p class="text" style="color: rgb(15, 1, 1); font-size: xx-large; font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bold;"> Generated Caption : <b>{{ your_result['caption'] }} </b> </p>
+					</div>
+				</div>
+					
+				
+			{% endif %}
+		</div>
+	</div>
+	
+		
+</body>
+</html>
